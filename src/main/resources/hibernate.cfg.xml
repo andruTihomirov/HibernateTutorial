@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernatetutorial</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+
+        <!-- JDBC Connection pool (use the build-in) -->
+        <property name="connection.pool_size">2</property>
+
+        <!-- SQL Dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
+
+        <!-- Second level cache -->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- Strategy schema recreation -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- Location of annotated classes -->
+        <mapping class="org.hibernatetutorial.model.User" />
+        <mapping class="org.hibernatetutorial.model.Address" />
+        <mapping class="org.hibernatetutorial.model.Passport" />
+        <mapping class="org.hibernatetutorial.model.Vehicle" />
+        <mapping class="org.hibernatetutorial.model.Comment" />
+
+    </session-factory>
+</hibernate-configuration>
