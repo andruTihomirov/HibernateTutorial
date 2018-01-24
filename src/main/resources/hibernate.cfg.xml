@@ -29,10 +29,11 @@
 
         <!-- Location of annotated classes -->
         <mapping class="org.hibernatetutorial.model.User" />
-        <mapping class="org.hibernatetutorial.model.Address" />
-        <mapping class="org.hibernatetutorial.model.Passport" />
+        <mapping class="org.hibernatetutorial.model.onetoone.Address" />
+        <mapping class="org.hibernatetutorial.model.onetoone.Passport" />
         <mapping class="org.hibernatetutorial.model.Vehicle" />
         <mapping class="org.hibernatetutorial.model.Comment" />
+        <mapping class="org.hibernatetutorial.model.onetoone.Partner" />
 
     </session-factory>
 </hibernate-configuration>

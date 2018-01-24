@@ -1,28 +1,45 @@
 package org.hibernatetutorial.model;
 
+import org.hibernatetutorial.model.embedded.UserDetail;
+import org.hibernatetutorial.model.onetoone.Address;
+import org.hibernatetutorial.model.onetoone.Partner;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String login;
-
-    private String password;
-
     @Embedded
-    private Passport passport;
+    private UserDetail userDetail;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_partner",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "partner_id")
+    )
+    private Partner partner;
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
 
     public long getId() {
         return id;
@@ -32,28 +49,12 @@ public class User {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public UserDetail getUserDetail() {
+        return userDetail;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Passport getPassport() {
-        return passport;
-    }
-
-    public void setPassport(Passport passport) {
-        this.passport = passport;
+    public void setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
     }
 
     public Address getAddress() {
@@ -62,5 +63,21 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Partner getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Partner partner) {
+        this.partner = partner;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

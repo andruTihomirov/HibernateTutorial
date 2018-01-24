@@ -1,4 +1,6 @@
-package org.hibernatetutorial.model;
+package org.hibernatetutorial.model.onetoone;
+
+import org.hibernatetutorial.model.User;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +25,7 @@ public class Address {
 
     private int apartment;
 
-    @OneToOne
+    @OneToOne(mappedBy = "address")
     private User user;
 
     public long getId() {

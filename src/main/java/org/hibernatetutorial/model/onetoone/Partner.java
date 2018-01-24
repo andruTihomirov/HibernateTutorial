@@ -1,23 +1,25 @@
-package org.hibernatetutorial.model;
+package org.hibernatetutorial.model.onetoone;
+
+import org.hibernatetutorial.model.User;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Comment {
+@Table(name = "partners")
+public class Partner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Lob
-    private String text;
+    private String name;
 
-    @ManyToOne
+    @OneToOne(mappedBy = "partner")
     private User user;
 
     public long getId() {
@@ -28,12 +30,12 @@ public class Comment {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
+    public String getName() {
+        return name;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public User getUser() {
