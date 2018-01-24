@@ -1,5 +1,6 @@
 package org.hibernatetutorial.model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ public class User {
 
     private String password;
 
-    @OneToOne(mappedBy = "user")
+    @Embedded
     private Passport passport;
 
     @OneToOne(mappedBy = "user")

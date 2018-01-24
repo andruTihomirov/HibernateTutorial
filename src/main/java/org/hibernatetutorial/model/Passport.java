@@ -1,44 +1,41 @@
 package org.hibernatetutorial.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
-@Entity
+@Embeddable
 public class Passport {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @Column(name = "passport_id")
+    private String passportId;
 
-    private String number;
+    @Column(name = "passport_series")
+    private String passportSeries;
 
-    @OneToOne
-    private User user;
+    @Column(name = "passport_number")
+    private String passportNumber;
 
-    public long getId() {
-        return id;
+    public String getPassportId() {
+        return passportId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setPassportId(String passportId) {
+        this.passportId = passportId;
     }
 
-    public String getNumber() {
-        return number;
+    public String getPassportSeries() {
+        return passportSeries;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setPassportSeries(String passportSeries) {
+        this.passportSeries = passportSeries;
     }
 
-    public User getUser() {
-        return user;
+    public String getPassportNumber() {
+        return passportNumber;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
     }
 }
