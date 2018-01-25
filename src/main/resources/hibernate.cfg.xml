@@ -25,15 +25,28 @@
         <property name="show_sql">true</property>
 
         <!-- Strategy schema recreation -->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
 
         <!-- Location of annotated classes -->
         <mapping class="org.hibernatetutorial.model.User" />
+
         <mapping class="org.hibernatetutorial.model.onetoone.Address" />
         <mapping class="org.hibernatetutorial.model.onetoone.Passport" />
-        <mapping class="org.hibernatetutorial.model.Vehicle" />
-        <mapping class="org.hibernatetutorial.model.Comment" />
+        <mapping class="org.hibernatetutorial.model.manytomany.Vehicle" />
+        <mapping class="org.hibernatetutorial.model.onetomany.Comment" />
         <mapping class="org.hibernatetutorial.model.onetoone.Partner" />
+
+        <mapping class="org.hibernatetutorial.model.inheritance.singletablestrategy.TwoWheelerVehicle" />
+        <mapping class="org.hibernatetutorial.model.inheritance.singletablestrategy.FourWheelerVehicle" />
+
+        <mapping class="org.hibernatetutorial.model.inheritance.tableperclassstrategy.Plane" />
+        <mapping class="org.hibernatetutorial.model.inheritance.tableperclassstrategy.Airliner" />
+        <mapping class="org.hibernatetutorial.model.inheritance.tableperclassstrategy.WarPlane" />
+
+        <mapping class="org.hibernatetutorial.model.inheritance.joinedstrategy.Predator" />
+        <mapping class="org.hibernatetutorial.model.inheritance.joinedstrategy.Cat" />
+        <mapping class="org.hibernatetutorial.model.inheritance.joinedstrategy.Owl" />
+
 
     </session-factory>
 </hibernate-configuration>

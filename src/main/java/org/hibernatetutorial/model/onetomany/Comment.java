@@ -1,4 +1,6 @@
-package org.hibernatetutorial.model;
+package org.hibernatetutorial.model.onetomany;
+
+import org.hibernatetutorial.model.User;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

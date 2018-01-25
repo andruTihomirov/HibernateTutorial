@@ -1,6 +1,8 @@
 package org.hibernatetutorial.model;
 
 import org.hibernatetutorial.model.embedded.UserDetail;
+import org.hibernatetutorial.model.manytomany.Vehicle;
+import org.hibernatetutorial.model.onetomany.Comment;
 import org.hibernatetutorial.model.onetoone.Address;
 import org.hibernatetutorial.model.onetoone.Partner;
 
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,6 +43,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
+
+    @ManyToMany
+    private List<Vehicle> vehicles;
 
     public long getId() {
         return id;
@@ -79,5 +85,13 @@ public class User {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
 }
