@@ -1,20 +1,16 @@
 package org.hibernatetutorial;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernatetutorial.model.User;
+import org.hibernatetutorial.services.UserService;
+import org.hibernatetutorial.services.UserServiceImpl;
 
 public class Main {
 
     public static void main(String[] args) {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-
-        // do something
-
-        session.getTransaction().commit();
-        session.close();
+        UserService userService = new UserServiceImpl();
+        // userService.create(10);
+        User user = userService.get(16);
+        System.out.println(user.getUserDetail().getLogin() + " " + user.getUserDetail().getPassword());
     }
 
 }
