@@ -8,4 +8,6 @@ public interface UserService {
 
     User get(long id);
 
+    void update(User user);
+
 }

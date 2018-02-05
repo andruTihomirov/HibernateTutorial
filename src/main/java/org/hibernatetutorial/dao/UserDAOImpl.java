@@ -44,4 +44,17 @@ public class UserDAOImpl implements DAO<User> {
 
         return user;
     }
+
+    @Override
+    public void update(User user) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.update(user);
+
+        session.getTransaction().commit();
+        session.close();
+
+    }
 }

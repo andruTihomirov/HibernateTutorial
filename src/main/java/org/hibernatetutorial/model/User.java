@@ -1,11 +1,16 @@
 package org.hibernatetutorial.model;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernatetutorial.model.embedded.UserDetail;
 import org.hibernatetutorial.model.manytomany.Vehicle;
 import org.hibernatetutorial.model.onetomany.Comment;
 import org.hibernatetutorial.model.onetoone.Address;
 import org.hibernatetutorial.model.onetoone.Partner;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -15,6 +20,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -22,6 +29,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
+// @NamedQuery(name = "User.byId", query = "from User where id = ?")
+// @NamedNativeQuery(name = "User.byLogin", query = "select * from users where id = ?", resultClass = User.class)
+// @Cacheable
+// @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class User {
 
     @Id
